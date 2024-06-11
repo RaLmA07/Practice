@@ -27,7 +27,7 @@ func main() {
 	srv := &http.Server{
 		Addr:     *addr,
 		ErrorLog: errorLog,
-		Handler:  app.routes(), // Вызов нового метода app.routes()
+		Handler:  app.routes(),
 	}
 
 	infoLog.Printf("Запуск сервера на %s", *addr)
