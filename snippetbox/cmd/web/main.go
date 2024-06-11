@@ -13,7 +13,7 @@ type application struct {
 }
 
 func main() {
-	addr := flag.String("addr", ":4000", "Сетевой адрес HTTP")
+	addr := flag.String("addr", ":4000", "Сетевой адрес веб-сервера")
 	flag.Parse()
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
@@ -24,18 +24,10 @@ func main() {
 		infoLog:  infoLog,
 	}
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.home)
-	mux.HandleFunc("/snippet", app.showSnippet)
-	mux.HandleFunc("/snippet/create", app.createSnippet)
-
-	fileServer := http.FileServer(http.Dir("./ui/static/"))
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-
 	srv := &http.Server{
 		Addr:     *addr,
 		ErrorLog: errorLog,
-		Handler:  mux,
+		Handler:  app.routes(), // Вызов нового метода app.routes()
 	}
 
 	infoLog.Printf("Запуск сервера на %s", *addr)
