@@ -2,8 +2,6 @@ package mysql
 
 import (
 	"database/sql"
-
-	"golangify.com/snippetbox/pkg/models"
 )
 
 // SnippetModel - Определяем тип который обертывает пул подключения sql.DB
