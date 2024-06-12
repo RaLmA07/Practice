@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"golangify.com/snippetbox/pkg/models/mysql"
+	"golangify.com/snippetbox/pkg/mysql"
 
 	_ "github.com/go-sql-driver/mysql"
 )
