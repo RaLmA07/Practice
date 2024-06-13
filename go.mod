@@ -1,4 +1,4 @@
-module golangify.com/snippetbox
+module golangify.com
 
 go 1.22.3
 
